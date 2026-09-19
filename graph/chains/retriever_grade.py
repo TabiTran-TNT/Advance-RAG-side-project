@@ -34,5 +34,3 @@ grade_prompt = ChatPromptTemplate.from_messages(
         ("human", "Retrieved document: \n\n {document} \n\n User question: {question}"),
     ]
 )
-
-retrieval_grader = grade_prompt | structured_llm_grader
