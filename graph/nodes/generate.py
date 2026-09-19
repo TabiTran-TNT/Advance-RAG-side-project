@@ -8,5 +8,8 @@ def generate(state: GraphState) -> Dict[str, Any]:
     question = state["question"]
     documents = state["documents"]
     
-    generation = generation_chain.invoke({"context": documents, "question": question})
+    generation = generation_chain.invoke({
+        "context": [doc.page_content for doc in documents],
+        "question": question,
+    })
     return {"documents": documents, "question": question, "generation": generation}
